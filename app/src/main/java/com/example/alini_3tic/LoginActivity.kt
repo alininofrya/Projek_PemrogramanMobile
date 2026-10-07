@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -28,23 +29,31 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-//        val btnLogin : Button = findViewById(R.id.btnlogin)
-//        val username : EditText = findViewById(R.id.edtUsername)
-//        val password : EditText = findViewById(R.id.edtPassword)
+
+        // Kode ini harus selalu dipanggil saat butuh akses "user_pref"
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        // Kondisi jika isLogin bernilai true
+
+
 
         binding.btnlogin.setOnClickListener {
             val user = binding.edtUsername.text.toString()
             val pass = binding.edtPassword.text.toString()
 
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-            intent.putExtra("nama", "Alini Nofry A")
-            intent.putExtra("umur", 20)
-            startActivity(intent) // baru
-
-            Log.d("Username: ", user)
-            Log.d("Password: ", pass)
-
-            Toast.makeText(this, "Username: $user Password: $pass", Toast.LENGTH_LONG).show()
+            if (user.isNotEmpty() && user == pass) {
+                val editor = sharedPref.edit()
+                editor.putBoolean("isLogin", true)
+                editor.putString("username", user)
+                editor.apply()
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            } else {
+                AlertDialog.Builder(this)
+                    .setTitle("Login Gagal")
+                    .setMessage("Silahkan coba lagi")
+                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }
         }
     }
 }
