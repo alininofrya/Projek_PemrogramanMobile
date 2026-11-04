@@ -19,11 +19,12 @@
         app:layout_constraintVertical_bias="0.316" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/materialCardView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="60dp"
         app:cardElevation="5dp"
-        android:backgroundTint="#FF7474"
+        android:backgroundTint="#FF9100"
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -65,46 +66,81 @@
         android:id="@+id/btnKembali"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#DE94ED"
         android:text="Kembali"
-        android:backgroundTint="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/btnToLima"
-        android:layout_width="wrap_content"
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridMenu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#E75050"
-        android:text="Pertemuan 5"
+        android:layout_marginTop="112dp"
+        android:padding="16dp"
+        app:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnKembali" />
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:useDefaultMargins="true">
+
+        <Button
+            android:id="@+id/btnToLima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF005D"
+            android:text="Pertemuan 5"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnKembali"
+            app:layout_gravity="fill_horizontal"
+            app:layout_row="0" />
+
+        <Button
+            android:id="@+id/btnToEnam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF5486"
+            android:text="Pertemuan 6"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:layout_column="1"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnToLima"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_row="0" />
+
+        <Button
+            android:id="@+id/btnToNinth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pertemuan 9"
+            android:backgroundTint="#FF5C2D"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnToEnam" />
+    </androidx.gridlayout.widget.GridLayout>
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:backgroundTint="#FF015B"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#F50000"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnToLima" />
-
-    <Button
-        android:id="@+id/btnToEnam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Pertemuan 6"
-        android:backgroundTint="#2B41A8"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnToLima"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/gridMenu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
